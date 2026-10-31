@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#111318">
+  <meta name="description" content="MM2 Vault — demo marketplace dan dashboard inventory Murder Mystery 2.">
+  <title>MM2 Vault — Demo Store</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <a class="brand" href="#" aria-label="MM2 Vault home">
+        <span class="brand-mark">V</span><span>MM2<span class="brand-muted">VAULT</span></span>
+      </a>
+      <div class="side-label">WORKSPACE</div>
+      <nav class="nav-list" aria-label="Navigasi utama">
+        <button class="nav-link active" data-view="store"><span class="nav-icon">▦</span> Marketplace</button>
+        <button class="nav-link" data-view="dashboard"><span class="nav-icon">◫</span> Dashboard <span class="nav-tag">ADMIN</span></button>
+      </nav>
+      <div class="side-label side-label-spaced">PREFERENCES</div>
+      <button class="nav-link" id="themeToggle"><span class="nav-icon">◐</span> Tampilan <span class="nav-end" id="themeName">Dark</span></button>
+      <div class="sidebar-bottom">
+        <div class="demo-card"><span class="live-dot"></span><span>DEMO ENVIRONMENT</span><p>Data tersimpan di browser ini. Tidak ada transaksi sungguhan.</p></div>
+        <div class="profile"><div class="avatar">MV</div><div><strong>Vault Admin</strong><small>Demo workspace</small></div><span class="profile-more">···</span></div>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar">
+        <button class="mobile-menu" id="mobileMenu" aria-label="Buka navigasi">☰</button>
+        <div class="breadcrumb"><span>Workspace</span><b>/</b><strong id="pageCrumb">Marketplace</strong></div>
+        <div class="top-actions">
+          <span class="demo-pill"><i></i> DEMO MODE</span>
+          <button class="icon-button cart-top" id="openCart" aria-label="Buka keranjang">♧<span class="cart-count" id="cartCount">0</span></button>
+        </div>
+      </header>
+
+      <section class="view active" id="storeView">
+        <div class="store-hero">
+          <div class="hero-copy">
+            <div class="eyebrow"><span class="eyebrow-line"></span> THE MM2 ITEM MARKET</div>
+            <h1>Build your<br><em>inventory.</em></h1>
+            <p>Temukan item favoritmu, susun keranjang, dan kelola inventory dalam satu tempat.</p>
+            <div class="hero-meta"><span><b>04</b> CATEGORIES</span><span class="meta-divider"></span><span><b id="heroStock">—</b> ITEMS IN STOCK</span></div>
+          </div>
+          <div class="hero-art" aria-hidden="true">
+            <div class="art-ring ring-one"></div><div class="art-ring ring-two"></div>
+            <div class="hero-sigil">✦</div><div class="hero-knife">⚔</div>
+            <span class="art-caption">MM2 / VAULT<br>COLLECTION 001</span>
+            <span class="art-index">01 — 04</span>
+          </div>
+          <div class="hero-stamp">CURATED<br><b>MM2</b><br>ITEMS</div>
+        </div>
+
+        <div class="section-heading">
+          <div><div class="eyebrow">THE COLLECTION</div><h2>Explore items <span class="heading-count" id="productCount">06</span></h2></div>
+          <label class="search-box"><span>⌕</span><input id="searchInput" type="search" placeholder="Cari item..." autocomplete="off"><kbd>/</kbd></label>
+        </div>
+        <div class="catalog-toolbar">
+          <div class="filter-list" id="categoryFilters">
+            <button class="filter-chip active" data-category="All">All items</button>
+            <button class="filter-chip" data-category="Chroma">Chroma</button>
+            <button class="filter-chip" data-category="Godly">Godly</button>
+            <button class="filter-chip" data-category="Ancient">Ancient</button>
+            <button class="filter-chip" data-category="Vintage">Vintage</button>
+          </div>
+          <label class="sort-select"><span>Sort</span><select id="sortSelect"><option value="featured">Featured</option><option value="price-low">Price: low to high</option><option value="price-high">Price: high to low</option><option value="name">Name A–Z</option></select></label>
+        </div>
+        <div class="product-grid" id="productGrid"></div>
+        <div class="catalog-foot"><span>MM2 VAULT / DEMO CATALOG</span><span>DISPLAYING <b id="showingCount">0</b> ITEMS</span></div>
+      </section>
+
+      <section class="view" id="dashboardView">
+        <div class="dashboard-heading"><div><div class="eyebrow">CONTROL CENTER / 001</div><h1>Store overview<span class="heading-period">.</span></h1><p>Ringkasan performa dan inventory demo MM2 Vault.</p></div><button class="primary-button" id="addProductBtn">＋ Add item</button></div>
+        <div class="stats-grid">
+          <article class="stat-card"><div class="stat-top"><span>TOTAL PRODUCTS</span><span class="stat-icon">▦</span></div><strong id="statProducts">—</strong><small><i class="stat-neutral"></i> Item terdaftar</small></article>
+          <article class="stat-card"><div class="stat-top"><span>ACTIVE STOCK</span><span class="stat-icon">◈</span></div><strong id="statStock">—</strong><small><i class="stat-positive"></i> Unit tersedia</small></article>
+          <article class="stat-card"><div class="stat-top"><span>DEMO ORDERS</span><span class="stat-icon">↗</span></div><strong id="statOrders">—</strong><small><i class="stat-neutral"></i> Pesanan simulasi</small></article>
+          <article class="stat-card"><div class="stat-top"><span>DEMO REVENUE</span><span class="stat-icon">◎</span></div><strong id="statRevenue">Rp0</strong><small><i class="stat-neutral"></i> Nilai order simulasi</small></article>
+        </div>
+        <div class="dashboard-columns">
+          <article class="panel inventory-panel"><div class="panel-heading"><div><span class="eyebrow">MANAGE CATALOG</span><h3>Inventory</h3></div><span class="panel-counter" id="inventoryCount">0 ITEMS</span></div><div class="table-wrap"><table><thead><tr><th>ITEM</th><th>CATEGORY</th><th>PRICE</th><th>STOCK</th><th>ACTION</th></tr></thead><tbody id="inventoryBody"></tbody></table></div></article>
+          <article class="panel orders-panel"><div class="panel-heading"><div><span class="eyebrow">LATEST ACTIVITY</span><h3>Recent orders</h3></div><span class="panel-counter">LOCAL DEMO</span></div><div class="orders-list" id="ordersList"></div></article>
+        </div>
+        <div class="dashboard-note"><span>ⓘ</span><p>Dashboard ini hanya simulasi front-end. Produk, stok, dan pesanan disimpan di localStorage browser, bukan database online.</p></div>
+      </section>
+
+      <footer class="app-footer"><span>© 2026 MM2 VAULT</span><span>UNOFFICIAL FAN-MADE DEMO · NOT AFFILIATED WITH ROBLOX</span></footer>
+    </main>
+  </div>
+
+  <div class="drawer-backdrop" id="drawerBackdrop"></div>
+  <aside class="cart-drawer" id="cartDrawer" aria-label="Keranjang belanja" aria-hidden="true">
+    <div class="drawer-header"><div><span class="eyebrow">YOUR SELECTION</span><h2>Your cart <span id="drawerCount">0</span></h2></div><button class="close-button" id="closeCart" aria-label="Tutup">×</button></div>
+    <div class="cart-items" id="cartItems"></div>
+    <div class="cart-empty" id="cartEmpty"><div class="empty-symbol">♧</div><h3>Keranjang masih kosong</h3><p>Pilih item dari catalog untuk mulai menyusun order demo.</p></div>
+    <div class="cart-summary" id="cartSummary"><div class="summary-line"><span>Subtotal</span><b id="cartSubtotal">Rp0</b></div><div class="summary-line"><span>Biaya demo</span><b>Rp0</b></div><div class="summary-total"><span>Total</span><strong id="cartTotal">Rp0</strong></div><button class="checkout-button" id="checkoutBtn">Create demo order <span>↗</span></button><small>Simulasi saja — tidak ada pembayaran asli.</small></div>
+  </aside>
+
+  <div class="modal-backdrop" id="modalBackdrop">
+    <section class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <div class="modal-heading"><div><span class="eyebrow">CATALOG MANAGEMENT</span><h2 id="modalTitle">Add new item</h2></div><button class="close-button" id="closeModal" aria-label="Tutup">×</button></div>
+      <form id="productForm">
+        <input type="hidden" id="editProductId">
+        <label>Item name<input id="formName" required maxlength="40" placeholder="e.g. Chroma Heat"></label>
+        <div class="form-row"><label>Category<select id="formCategory"><option>Chroma</option><option>Godly</option><option>Ancient</option><option>Vintage</option></select></label><label>Price (IDR)<input id="formPrice" type="number" min="1" required placeholder="25000"></label></div>
+        <label>Stock quantity<input id="formStock" type="number" min="0" required placeholder="5"></label>
+        <div class="modal-actions"><button type="button" class="secondary-button" id="cancelModal">Cancel</button><button type="submit" class="primary-button">Save item</button></div>
+      </form>
+    </section>
+  </div>
+  <div class="toast" id="toast" role="status"></div>
+  <script src="script.js"></script>
+</body>
+</html>
